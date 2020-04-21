@@ -8,11 +8,9 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.urlencoded());
 
 app.post('/repos', function (req, res) {
-  // TODO - your code here!
-  // This route should take the github username provided
-  // and get the repo information from the github API, then
-  // save the repo information in the database
+
   console.log(`POST in Server ${JSON.stringify(req.body.search)}`)
+
   let user = req.body.search;
   github.getReposByUsername(user, (err, repos) => {
     let repoArr = [];
@@ -23,6 +21,7 @@ app.post('/repos', function (req, res) {
       let parsed = JSON.parse(repos)
 
       parsed.forEach((repo) => {
+
         let repoObj = {
           username: repo.owner.login,
           repoName: repo.name,
@@ -30,9 +29,12 @@ app.post('/repos', function (req, res) {
           link: repo.html_url,
           forks: repo.forks
         }
+
         repoArr.push(repoObj);
         db.save(repoObj);
+
       })
+
       Promise.all(repoArr)
         .then((result) => {
           return db.getRepos()
@@ -40,6 +42,7 @@ app.post('/repos', function (req, res) {
             res.send(results);
         })
       })
+
     }
   })
 });

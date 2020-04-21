@@ -8,7 +8,7 @@ const RepoList = (props) => (
       {props.repos.slice(0, 25).map((repo) => {
         return <li key={repo.repoID}>
         <span>
-          <a href={`${repo.link}`} style={{textDecoration:'none'}}> {repo.repoName} </a>
+          <a href= {repo.link} target="_blank" style={{textDecoration:'none'}}> {repo.repoName} </a>
           <b> by: </b> {repo.username}
           <b> Forks: </b> {repo.forks}
           <div>=========================================</div>
