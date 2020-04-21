@@ -16,31 +16,35 @@ class App extends React.Component {
   search (term) {
     console.log(`${term} was searched`);
     // TODO
-    $.ajax({
-      type: 'POST',
+    $.post({
       url: '/repos',
-      data: term,
-      contentType: 'application/json',
+      data: {search: term},
       error: ((err) => {
-        console.error('POST ERROR!', err)
+        console.error('AJAX POST FAILED!', err)
       }),
       success: ((data) => {
-        $.ajax({
-          type: 'GET',
-          url: '/repos',
-          data: term,
-          contentType: 'application/json',
-          error: ((err) => {
-            console.error('GET ERROR! ', err)
-          }),
-          success: ((repos) => {
-            this.setState({
-              repos: repos
-            })
-          })
+        console.log('Made it to here!', data)
+        this.setState({
+          repos: data
         })
       })
-    })
+    });
+
+    //     $.ajax({
+    //       type: 'GET',
+    //       url: '/repos',
+    //       data: {id: data},
+    //       contentType: 'application/json',
+    //       error: ((err) => {
+    //         console.error('GET ERROR! ', err)
+    //       }),
+    //       success: ((repos) => {
+    //         this.setState({
+    //           repos: repos
+    //         })
+    //       })
+    //     })
+    //   })
   }
 
   render () {
