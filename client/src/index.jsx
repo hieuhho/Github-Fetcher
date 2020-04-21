@@ -27,7 +27,6 @@ class App extends React.Component {
         console.error('AJAX POST FAILED!', err)
       }),
       success: ((data) => {
-        console.log('Made it to here!', data)
         this.setState({
           repos: data
         })

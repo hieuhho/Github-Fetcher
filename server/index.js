@@ -33,13 +33,13 @@ app.post('/repos', function (req, res) {
         repoArr.push(repoObj);
         db.save(repoObj);
       })
-
-
-      //run (get)(?)
-        return db.getRepos()
-        .then((results) => {
-         res.send(results);
-       })
+      Promise.all(repoArr)
+        .then((result) => {
+          return db.getRepos()
+          .then((results) => {
+            res.send(results);
+        })
+      })
     }
   })
 });
