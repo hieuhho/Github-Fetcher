@@ -16,16 +16,26 @@ let save = (repos) => {
   // This function should save a repo or repos to
   // the MongoDB
   let myRepo = new Repo({
-    username: repos.owner.login,
-    repoName: repos.name,
-    repoID: repos.id,
+    username: repos.username,
+    repoName: repos.repoName,
+    repoID: repos.repoID,
     forks: repos.forks
   })
-  .save((err) => {
-    if (err) {
-      console.error('SAVE ERROR!', err)
-    }
-  })
-}
 
+  myRepo.save((err, doc) => {
+    if (err) {
+      return console.error('SAVE ERROR!', err.message)
+    }
+    console.log('SAVE SUCCESSFUL!')
+  })
+};
+
+let getRepos = () => {
+  return Repo.find({}).sort({
+    forks: -1
+  }).limit(25);
+};
+
+console.log('getRepos: ', getRepos);
 module.exports.save = save;
+module.exports.getRepos = getRepos;
