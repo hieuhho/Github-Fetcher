@@ -27,27 +27,28 @@ app.post('/repos', function (req, res) {
           username: repo.owner.login,
           repoName: repo.name,
           repoID: repo.id,
+          link: repo.html_url,
           forks: repo.forks
         }
         repoArr.push(repoObj);
         db.save(repoObj);
       })
 
-      //store in db  -> repoarr
+
       //run (get)(?)
-      //send back top 25
-      res.send(repoArr);
+        return db.getRepos()
+        .then((results) => {
+         res.send(results);
+       })
     }
   })
 });
 
 app.get('/repos', function (req, res) {
-  // TODO - your code here!
-  // This route should send back the top 25 repos
-  db.getRepos((results) => {
-    console.log('results: ', results);
-    res.send(results);
-  })
+  return db.getRepos()
+    .then((results) => {
+      res.send(results)
+    })
 });
 
 let port = 1128;

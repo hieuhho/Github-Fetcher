@@ -19,6 +19,7 @@ let save = (repos) => {
     username: repos.username,
     repoName: repos.repoName,
     repoID: repos.repoID,
+    link: repos.link,
     forks: repos.forks
   })
 

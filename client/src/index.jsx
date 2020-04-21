@@ -13,6 +13,10 @@ class App extends React.Component {
     this.search = this.search.bind(this);
   }
 
+  componentDidMount() {
+    this.getTopRepo(event);
+  };
+
   search (term) {
     console.log(`${term} was searched`);
     // TODO
@@ -29,23 +33,21 @@ class App extends React.Component {
         })
       })
     });
+  };
 
-    //     $.ajax({
-    //       type: 'GET',
-    //       url: '/repos',
-    //       data: {id: data},
-    //       contentType: 'application/json',
-    //       error: ((err) => {
-    //         console.error('GET ERROR! ', err)
-    //       }),
-    //       success: ((repos) => {
-    //         this.setState({
-    //           repos: repos
-    //         })
-    //       })
-    //     })
-    //   })
-  }
+  getTopRepo (event) {
+    $.get({
+      url: '/repos',
+      error: ((err) => {
+        return console.log('AJAX GET FAILED!', err)
+      }),
+      success: ((repos) => {
+        this.setState({
+          repos: repos
+        })
+      })
+    });
+  };
 
   render () {
     return (<div>
