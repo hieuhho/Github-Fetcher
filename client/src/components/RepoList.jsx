@@ -10,7 +10,7 @@ const RepoList = (props) => (
         <span>
           <a href= {repo.link} target="_blank"> {repo.repoName} </a>
           <b> by: </b> {repo.username}
-          <b className="num"> Forks: </b> {repo.forks}
+          <b className="num">{repo.forks} forks </b>
         </span>
         </li>
       })}
