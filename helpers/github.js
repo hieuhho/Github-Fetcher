@@ -1,5 +1,5 @@
 const request = require('request');
-const config = require('../config.js');
+// const config = require('../config.js');
 
 let getReposByUsername = (username, page = 1, callback) => {
 
