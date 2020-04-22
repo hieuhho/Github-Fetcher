@@ -12,15 +12,13 @@ app.post('/repos', function (req, res) {
   console.log(`POST in Server ${JSON.stringify(req.body.search)}`)
 
   let user = req.body.search;
-  github.getReposByUsername(user, (err, repos) => {
+  github.getReposByUsername(user, 1, (err, repos) => {
     let repoArr = [];
     if (err) {
       console.error('APP POST ERROR', err);
     } else {
 
-      let parsed = JSON.parse(repos)
-
-      parsed.forEach((repo) => {
+      repos.forEach((repo) => {
 
         let repoObj = {
           username: repo.owner.login,
@@ -42,7 +40,6 @@ app.post('/repos', function (req, res) {
             res.send(results);
         })
       })
-
     }
   })
 });
