@@ -1,5 +1,5 @@
 const request = require('request');
-const config = require('../config.js');
+// const config = require('../config.js');
 
 let getReposByUsername = (username, callback) => {
 
@@ -7,7 +7,7 @@ let getReposByUsername = (username, callback) => {
     url: `https://api.github.com/users/${username}/repos?page=1&per_page=100`,
     headers: {
       'User-Agent': 'request',
-      'Authorization': `token ${config.TOKEN}`
+      'Authorization': `token ${process.env.TOKEN}`
     }
   };
 
