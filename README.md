@@ -35,18 +35,19 @@ MongoDB 4.2
 npm install
 ```
 
+To install MongoDB, please follow these [instructions](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)
+
 ### Start Server
 
 ```
 npm start
 ```
+
 ### Start Webpack
 
 ```
 npm run react-dev
 ```
-
-To install MongoDB, please follow these [instructions](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)
 
 ## Built With
 
