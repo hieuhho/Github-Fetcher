@@ -55,6 +55,18 @@ npm run react-dev
 * [React](https://reactjs.org/)
 * [MongoDB](https://www.mongodb.com/)
 
+
+## Deployment
+
+This app uses the GitHub API. Please create a `config.js` and export your Github token as follow
+
+```
+module.exports = {
+  TOKEN: "your_github_token"
+}
+```
+This app was deployed using [Heroku](https://dashboard.heroku.com/).
+
 ## Authors
 
 * **Hieu Ho** - *Initial work* - [AmiraVomir](https://github.com/AmiraVomir)
